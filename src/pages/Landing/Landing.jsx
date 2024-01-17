@@ -3,9 +3,17 @@ import carouselData from "../../utils/carouselData";
 
 const Landing = () => {
   return (
-    <div className="px-6 py-8">
-      <div className="flex justify-center items-center">
-        <div className="max-w-[1280px] rounded-lg overflow-hidden">
+    <main className="px-6 py-8">
+      <div className="flex flex-col items-center">
+        <div className="my-2 text-center">
+          <p className="text-[1.75rem] sm:text-4xl md:text-5xl font-semibold">
+            Play Beyond Limits
+          </p>
+          <p className="text-sm sm:text-lg font-medium my-1">
+            Get the most popular games at your fingertips
+          </p>
+        </div>
+        <div className="max-w-[1152px] rounded-lg overflow-hidden">
           <Carousel>
             {carouselData.map((carousel) => (
               <img src={carousel.imageUrl} key={carousel.id} alt="" />
@@ -13,7 +21,7 @@ const Landing = () => {
           </Carousel>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

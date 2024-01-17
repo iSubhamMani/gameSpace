@@ -1,7 +1,7 @@
 const Login = () => {
   return (
     <div>
-      <button className="text-lg font-bold">Login</button>
+      <button className="text-sm sm:text-lg font-bold">Login</button>
     </div>
   );
 };
