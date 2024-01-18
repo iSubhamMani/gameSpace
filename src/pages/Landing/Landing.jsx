@@ -1,4 +1,5 @@
 import Carousel from "../../components/Carousel/Carousel";
+import DiscoverGames from "../../components/DiscoverGames/DiscoverGames";
 import carouselData from "../../utils/carouselData";
 
 const Landing = () => {
@@ -16,11 +17,17 @@ const Landing = () => {
         <div className="max-w-[1152px] rounded-lg overflow-hidden">
           <Carousel>
             {carouselData.map((carousel) => (
-              <img src={carousel.imageUrl} key={carousel.id} alt="" />
+              <img
+                className="brightness-[0.8]"
+                src={carousel.imageUrl}
+                key={carousel.id}
+                alt=""
+              />
             ))}
           </Carousel>
         </div>
       </div>
+      <DiscoverGames />
     </main>
   );
 };

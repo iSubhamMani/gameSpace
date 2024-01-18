@@ -21,13 +21,13 @@ const Carousel = ({ children: carouselData }) => {
       <div className="p-4 absolute inset-0 flex items-center justify-between">
         <button
           onClick={prev}
-          className="p-1 w-7 md:w-10 rounded-full shadow bg-white opacity-70 text-gray-800 hover:opacity-100"
+          className="p-1 w-6 sm:w-7 md:w-10 rounded-full shadow bg-white opacity-70 text-gray-800 hover:opacity-100"
         >
           <ChevronLeft className="w-full h-full" />
         </button>
         <button
           onClick={next}
-          className="p-1 w-7 md:w-10 rounded-full shadow bg-white opacity-70 text-gray-800 hover:opacity-100"
+          className="p-1 w-6 sm:w-7 md:w-10 rounded-full shadow bg-white opacity-70 text-gray-800 hover:opacity-100"
         >
           <ChevronRight className="w-full h-full" />
         </button>
