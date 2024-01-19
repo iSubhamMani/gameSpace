@@ -4,6 +4,31 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary-clr-dark: #20252b;
+  --accent-clr: #f86551;
+  --primary-clr-light: #fff;
+  --primary-text-clr: #c46ff1;
+}
+
 body {
   font-family: "Comfortaa", sans-serif;
+}
+
+.btn {
+  border: 2px solid var(--accent-clr);
+  background: linear-gradient(
+    transparent,
+    transparent 50%,
+    var(--accent-clr) 50%,
+    var(--accent-clr)
+  );
+  background-size: 100% 200%;
+  color: var(--accent-clr);
+  transition: background 0.25s, color 0.15s ease-in-out 0.1s;
+}
+
+.btn:hover {
+  color: #fff;
+  background-position: 100% 100%;
 }

@@ -4,30 +4,39 @@ import carouselData from "../../utils/carouselData";
 
 const Landing = () => {
   return (
-    <main className="px-6 py-8">
-      <div className="flex flex-col items-center">
-        <div className="my-2 text-center">
-          <p className="text-[1.75rem] sm:text-4xl md:text-5xl font-semibold">
-            Play Beyond Limits
+    <main>
+      <div className="h-[210px] sm:h-[300px] relative">
+        <img
+          className="w-full h-full object-cover brightness-[0.4]"
+          src="https://images.hdqwalls.com/download/for-honor-game-2048x1152.jpg"
+          alt=""
+        />
+        <div className="absolute top-0 pt-[2rem] left-0 pl-[2rem] h-full bg-gradient-to-r from-black to-transparent">
+          <p className="text-[2rem] text-white sm:text-5xl md:text-7xl font-semibold">
+            Play Beyond <span className="text-primary-text-color">Limits</span>
           </p>
-          <p className="text-sm sm:text-lg font-medium my-1">
+          <p className="text-[1rem] text-white sm:text-lg md:text-2xl font-medium my-1 sm:my-4">
             Get the most popular games at your fingertips
           </p>
         </div>
-        <div className="max-w-[1152px] rounded-lg overflow-hidden">
-          <Carousel>
-            {carouselData.map((carousel) => (
-              <img
-                className="brightness-[0.8]"
-                src={carousel.imageUrl}
-                key={carousel.id}
-                alt=""
-              />
-            ))}
-          </Carousel>
-        </div>
       </div>
-      <DiscoverGames />
+      <div className="px-6 py-8">
+        <div className="flex flex-col items-center">
+          <div className="max-w-[1152px] rounded-lg overflow-hidden">
+            <Carousel>
+              {carouselData.map((carousel) => (
+                <img
+                  className="brightness-[0.8]"
+                  src={carousel.imageUrl}
+                  key={carousel.id}
+                  alt=""
+                />
+              ))}
+            </Carousel>
+          </div>
+        </div>
+        <DiscoverGames />
+      </div>
     </main>
   );
 };
