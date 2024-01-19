@@ -7,6 +7,7 @@ module.exports = {
       colors: {
         "primary-color-light": "var(--primary-clr-light)",
         "primary-color-dark": "var(--primary-clr-dark)",
+        "secondary-color-dark": "var(--secondary-clr-dark)",
         "accent-color": "var(--accent-clr)",
         "primary-text-color": "var(--primary-text-clr)",
         "primary-text-color-light": "var(--primary-text-clr-light)",
