@@ -1,11 +1,37 @@
-import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  Outlet,
+  RouterProvider,
+  createBrowserRouter,
+  useNavigate,
+} from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home/Home";
 import Product from "./pages/Product/Product";
 import Landing from "./pages/Landing/Landing";
+import { useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./utils/firebase";
+import { Provider, useDispatch } from "react-redux";
+import appStore from "./utils/redux/appStore";
+import { addUserInfo } from "./utils/redux/slices/userSlice";
 
 const Layout = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch(addUserInfo(user));
+        navigate("/home");
+      } else {
+        dispatch(addUserInfo(null));
+        navigate("/");
+      }
+    });
+  }, []);
+
   return (
     <div className="app">
       <Navbar />
@@ -39,7 +65,9 @@ const appRouter = createBrowserRouter([
 function App() {
   return (
     <div className="App">
-      <RouterProvider router={appRouter} />
+      <Provider store={appStore}>
+        <RouterProvider router={appRouter} />
+      </Provider>
     </div>
   );
 }
