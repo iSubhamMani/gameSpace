@@ -10,6 +10,8 @@
   --accent-clr: #f86551;
   --primary-clr-light: #fff;
   --primary-text-clr: #c46ff1;
+  --bg-clr-light-1: #fbf0ff;
+  --bg-clr-light-2: #ffffff;
 }
 
 body {
@@ -32,4 +34,16 @@ body {
 .btn:hover {
   color: #fff;
   background-position: 100% 100%;
+}
+
+.games-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+@media (min-width: 500px) {
+  .games-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
 }

@@ -11,6 +11,8 @@ module.exports = {
         "accent-color": "var(--accent-clr)",
         "primary-text-color": "var(--primary-text-clr)",
         "primary-text-color-light": "var(--primary-text-clr-light)",
+        "bg-clr-light-1": "var(--bg-clr-light-1)",
+        "bg-clr-light-2": "var(--bg-clr-light-2)",
       },
     },
   },

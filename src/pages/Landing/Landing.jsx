@@ -22,7 +22,7 @@ const Landing = () => {
       </div>
       <div className="px-6 py-8">
         <div className="flex flex-col items-center">
-          <div className="max-w-[1152px] rounded-lg overflow-hidden shadow-2xl">
+          <div className="max-w-[1152px] min-w-[250px] rounded-lg overflow-hidden shadow-2xl">
             <Carousel>
               {carouselData.map((carousel) => (
                 <img

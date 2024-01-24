@@ -7,7 +7,6 @@ import {
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home/Home";
-import Product from "./pages/Product/Product";
 import Landing from "./pages/Landing/Landing";
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
@@ -53,10 +52,6 @@ const appRouter = createBrowserRouter([
       {
         path: "/home",
         element: <Home />,
-      },
-      {
-        path: "/product/:id",
-        element: <Product />,
       },
     ],
   },
