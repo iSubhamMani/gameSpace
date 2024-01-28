@@ -2,18 +2,26 @@ import { useEffect, useState } from "react";
 import { FEED_API_URL } from "../../utils/constants";
 import Game from "../Game/Game";
 import { useDispatch, useSelector } from "react-redux";
-import { addResults } from "../../utils/redux/slices/feedResults";
+import {
+  addResults,
+  setNextPage,
+  updatePageNumber,
+} from "../../utils/redux/slices/feedResults";
 import ShimmerLoading from "../Shimmer/ShimmerLoading";
 
 const Feed = () => {
-  const [pageNumber, setPageNumber] = useState(1);
+  const pageNumber = useSelector((store) => store.feed?.pageNumber);
+  const feedResults = useSelector((store) => store.feed?.results);
+  const nextPage = useSelector((store) => store.feed?.nextPage);
+
   const [loading, setLoading] = useState(true);
 
   const dispatch = useDispatch();
-  const feedResults = useSelector((store) => store.feed?.results);
 
   useEffect(() => {
-    fetchFeed();
+    if (nextPage) {
+      fetchFeed();
+    }
   }, [pageNumber]);
 
   useEffect(() => {
@@ -28,7 +36,7 @@ const Feed = () => {
       document.documentElement.scrollHeight
     ) {
       setLoading(true);
-      setPageNumber((prev) => prev + 1);
+      dispatch(updatePageNumber());
     }
   };
 
@@ -39,6 +47,7 @@ const Feed = () => {
 
       if (data) {
         // Update store
+        dispatch(setNextPage(data?.next));
         dispatch(addResults(data?.results));
         setLoading(false);
       }
