@@ -12,13 +12,14 @@ const Game = ({ game }) => {
       className="bg-[#f8f8f8] shadow-md dark:shadow-2xl dark:bg-primary-color-dark rounded-md overflow-hidden
     border-b-4 border-b-primary-text-color"
     >
-      <div className="h-[200px]">
+      <div className="h-[12rem] sm:h-[18rem] md:h-[20rem]">
         <img
           className="w-full h-full object-cover"
           src={game?.background_image}
           alt=""
         />
       </div>
+
       <div className="px-5 py-4 flex flex-col gap-6">
         <h3 className="text-black dark:text-white font-bold text-xl line-clamp-1">
           {game?.name}
