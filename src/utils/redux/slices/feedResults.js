@@ -5,7 +5,7 @@ const feedResults = createSlice({
   initialState: {
     results: [],
     pageNumber: 1,
-    nextPage: true,
+    hasMore: false,
   },
   reducers: {
     addResults: (state, action) => {
@@ -14,12 +14,11 @@ const feedResults = createSlice({
     updatePageNumber: (state) => {
       state.pageNumber = state.pageNumber + 1;
     },
-    setNextPage: (state, action) => {
-      state.nextPage = action.payload;
+    setHasMore: (state, action) => {
+      state.hasMore = action.payload;
     },
   },
 });
 
-export const { addResults, updatePageNumber, setNextPage } =
-  feedResults.actions;
+export const { addResults, updatePageNumber, setHasMore } = feedResults.actions;
 export default feedResults.reducer;

@@ -1,66 +1,48 @@
-import { useEffect, useState } from "react";
-import { FEED_API_URL } from "../../utils/constants";
+import { useCallback, useRef } from "react";
 import Game from "../Game/Game";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addResults,
-  setNextPage,
-  updatePageNumber,
-} from "../../utils/redux/slices/feedResults";
+import { updatePageNumber } from "../../utils/redux/slices/feedResults";
 import ShimmerLoading from "../Shimmer/ShimmerLoading";
+import useGameFeed from "../../hooks/useGameFeed";
 
 const Feed = () => {
-  const pageNumber = useSelector((store) => store.feed?.pageNumber);
-  const feedResults = useSelector((store) => store.feed?.results);
-  const nextPage = useSelector((store) => store.feed?.nextPage);
-
-  const [loading, setLoading] = useState(true);
-
   const dispatch = useDispatch();
+  const observer = useRef();
 
-  useEffect(() => {
-    if (nextPage) {
-      fetchFeed();
-    }
-  }, [pageNumber]);
+  const { results, pageNumber, hasMore } = useSelector((store) => store.feed);
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+  const { loading, error } = useGameFeed(pageNumber);
 
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const handleScroll = () => {
-    if (
-      window.innerHeight + document.documentElement.scrollTop + 1 >=
-      document.documentElement.scrollHeight
-    ) {
-      setLoading(true);
-      dispatch(updatePageNumber());
-    }
-  };
-
-  const fetchFeed = async () => {
-    try {
-      const response = await fetch(FEED_API_URL + `&page=${pageNumber}`);
-      const data = await response.json();
-
-      if (data) {
-        // Update store
-        dispatch(setNextPage(data?.next));
-        dispatch(addResults(data?.results));
-        setLoading(false);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const lastGameElementRef = useCallback(
+    (node) => {
+      if (loading) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && hasMore) {
+          dispatch(updatePageNumber());
+        }
+      });
+      if (node) observer.current.observe(node);
+    },
+    [loading]
+  );
 
   return (
     <div className="games-container md:flex-1 gap-6">
-      {feedResults?.map((game) => (
-        <Game key={game?.id} game={game} />
-      ))}
+      {results?.map((game, index) => {
+        if (results.length === index + 1) {
+          return (
+            <div ref={lastGameElementRef}>
+              <Game key={game?.id} game={game} />
+            </div>
+          );
+        }
+        return (
+          <div key={game?.id}>
+            <Game game={game} />
+          </div>
+        );
+      })}
       {loading && <ShimmerLoading />}
     </div>
   );
