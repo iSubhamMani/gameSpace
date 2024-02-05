@@ -20,7 +20,6 @@ const useGameFeed = (pageNumber) => {
 
     return () => {
       window.removeEventListener("scroll", handleCache);
-      dispatch(setHasCache(true));
     };
   }, []);
 

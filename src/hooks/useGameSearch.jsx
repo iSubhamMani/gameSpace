@@ -1,12 +1,20 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { API_URL, PAGINATION_OFFSET } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { setHasCache } from "../utils/redux/slices/feedResults";
 
 const useSearchGames = (query, pageNumber) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [games, setGames] = useState([]);
   const [hasMore, setHasMore] = useState(false);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setHasCache(true));
+  }, []);
 
   useEffect(() => {
     setGames([]);
