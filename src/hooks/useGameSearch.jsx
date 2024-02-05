@@ -26,18 +26,20 @@ const useSearchGames = (query, pageNumber) => {
       const res = await axios({
         method: "GET",
         url: API_URL,
-        params: { page_size: PAGINATION_OFFSET, search: query },
+        params: {
+          page_size: PAGINATION_OFFSET,
+          search: query,
+          page: pageNumber,
+        },
         cancelToken: new axios.CancelToken((c) => (cancel = c)),
       });
 
-      const data = await res.json();
-
-      if (data) {
+      if (res) {
         setGames((prevGames) => {
-          return [...prevGames, ...data.results];
+          return [...prevGames, ...res?.data.results];
         });
 
-        setHasMore(data.results.length ? true : false);
+        setHasMore(res?.data?.results.length > 0);
         setLoading(false);
       }
     } catch (e) {
