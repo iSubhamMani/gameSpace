@@ -6,6 +6,7 @@ const feedResults = createSlice({
     results: [],
     pageNumber: 1,
     hasMore: false,
+    hasCache: false,
   },
   reducers: {
     addResults: (state, action) => {
@@ -17,8 +18,12 @@ const feedResults = createSlice({
     setHasMore: (state, action) => {
       state.hasMore = action.payload;
     },
+    setHasCache: (state, action) => {
+      state.hasCache = action.payload;
+    },
   },
 });
 
-export const { addResults, updatePageNumber, setHasMore } = feedResults.actions;
+export const { addResults, updatePageNumber, setHasMore, setHasCache } =
+  feedResults.actions;
 export default feedResults.reducer;

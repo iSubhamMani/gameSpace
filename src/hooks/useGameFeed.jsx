@@ -1,18 +1,37 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { API_URL, PAGINATION_OFFSET } from "../utils/constants";
-import { useDispatch } from "react-redux";
-import { addResults, setHasMore } from "../utils/redux/slices/feedResults";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addResults,
+  setHasCache,
+  setHasMore,
+} from "../utils/redux/slices/feedResults";
 
 const useGameFeed = (pageNumber) => {
   const dispatch = useDispatch();
+  const { hasCache } = useSelector((store) => store.feed);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    handleFeed();
+    window.addEventListener("scroll", handleCache);
+
+    return () => {
+      window.removeEventListener("scroll", handleCache);
+      dispatch(setHasCache(true));
+    };
+  }, []);
+
+  useEffect(() => {
+    if (hasCache) return;
+    else handleFeed();
   }, [pageNumber]);
+
+  const handleCache = () => {
+    dispatch(setHasCache(false));
+  };
 
   const handleFeed = async () => {
     setLoading(true);
