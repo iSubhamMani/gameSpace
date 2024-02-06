@@ -4,13 +4,13 @@ import { API_URL, PAGINATION_OFFSET } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addResults,
-  setHasCache,
+  setHasFeedCache,
   setHasMore,
 } from "../utils/redux/slices/feedResults";
 
 const useGameFeed = (pageNumber) => {
   const dispatch = useDispatch();
-  const { hasCache } = useSelector((store) => store.feed);
+  const { hasFeedCache } = useSelector((store) => store.feed);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -24,12 +24,12 @@ const useGameFeed = (pageNumber) => {
   }, []);
 
   useEffect(() => {
-    if (hasCache) return;
+    if (hasFeedCache) return;
     else handleFeed();
   }, [pageNumber]);
 
   const handleCache = () => {
-    dispatch(setHasCache(false));
+    dispatch(setHasFeedCache(false));
   };
 
   const handleFeed = async () => {
