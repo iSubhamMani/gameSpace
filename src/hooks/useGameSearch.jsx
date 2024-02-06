@@ -1,28 +1,48 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { API_URL, PAGINATION_OFFSET } from "../utils/constants";
-import { useDispatch } from "react-redux";
-import { setHasCache } from "../utils/redux/slices/feedResults";
+import { useDispatch, useSelector } from "react-redux";
+import { setHasFeedCache } from "../utils/redux/slices/feedResults";
+import {
+  addSearchResults,
+  setHasMore,
+  setHasSearchCache,
+  setPageNumber,
+  setSearchResults,
+} from "../utils/redux/slices/search";
 
-const useSearchGames = (query, pageNumber) => {
+const useGameSearch = (query, pageNumber) => {
+  const { hasSearchCache } = useSelector((store) => store.search);
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [games, setGames] = useState([]);
-  const [hasMore, setHasMore] = useState(false);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setHasCache(true));
+    dispatch(setHasFeedCache(true));
+
+    window.addEventListener("scroll", handleCache);
+
+    return () => {
+      window.removeEventListener("scroll", handleCache);
+    };
   }, []);
 
   useEffect(() => {
-    setGames([]);
+    dispatch(setPageNumber(1));
+    if (hasSearchCache) return;
+    dispatch(setSearchResults([]));
   }, [query]);
 
   useEffect(() => {
+    if (hasSearchCache) return;
     handleGameSearch();
   }, [query, pageNumber]);
+
+  const handleCache = () => {
+    dispatch(setHasSearchCache(false));
+  };
 
   const handleGameSearch = async () => {
     setLoading(true);
@@ -43,11 +63,8 @@ const useSearchGames = (query, pageNumber) => {
       });
 
       if (res) {
-        setGames((prevGames) => {
-          return [...prevGames, ...res?.data.results];
-        });
-
-        setHasMore(res?.data?.results.length > 0);
+        dispatch(addSearchResults(res?.data.results));
+        dispatch(setHasMore(res?.data?.results.length > 0));
         setLoading(false);
       }
     } catch (e) {
@@ -57,7 +74,7 @@ const useSearchGames = (query, pageNumber) => {
 
     return () => cancel();
   };
-  return { loading, error, games, hasMore };
+  return { loading, error };
 };
 
-export default useSearchGames;
+export default useGameSearch;
