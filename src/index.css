@@ -5,13 +5,13 @@
 @tailwind utilities;
 
 :root {
-  --primary-clr-dark: #20252b;
-  --secondary-clr-dark: #0d0d12;
+  --bg-primary-clr-dark: #1c1c1f;
+  --bg-secondary-clr-dark: #151515;
   --accent-clr: #f86551;
-  --primary-clr-light: #fff;
-  --primary-text-clr: #c46ff1;
-  --bg-clr-light-1: #fbf0ff;
-  --bg-clr-light-2: #ffffff;
+  --text-clr-primary: #fff;
+  --primary-clr: #1260e8;
+  --bg-primary-clr-light: #f7f7f7;
+  --bg-secondary-clr-light: #f7f7f7;
 }
 
 body {
@@ -39,6 +39,15 @@ body {
 .games-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.game {
+  transition: transform 0.2s;
+}
+
+.game:hover {
+  filter: brightness(0.85);
+  transform: scale(0.95);
 }
 
 @media (min-width: 500px) {

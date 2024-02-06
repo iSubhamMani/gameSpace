@@ -27,7 +27,7 @@ const Feed = () => {
   );
 
   return (
-    <div className="games-container md:flex-1 gap-6">
+    <div className="games-container md:flex-1 gap-6 md:gap-7">
       {results?.map((game, index) => {
         if (results.length === index + 1) {
           return (

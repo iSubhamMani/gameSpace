@@ -8,13 +8,13 @@ const Home = () => {
   return (
     <div
       className="px-4 sm:px-8 py-4
-    dark:bg-gradient-to-l from-[#11111ff3] to-secondary-color-dark"
+    dark:bg-bg-secondary-clr-dark bg-bg-clr-light"
     >
       <input
         onChange={(e) => setSearchQuery(e.target.value)}
         type="text"
         placeholder="Search games"
-        className="px-6 py-2 my-8 text-lg text-primary-text-color bg-transparent border-2 border-primary-text-color rounded-full"
+        className="px-6 py-2 my-8 text-lg text-primary-color bg-transparent border-2 border-primary-color rounded-full"
       />
       {searchQuery.trim() === "" ? (
         <Feed />

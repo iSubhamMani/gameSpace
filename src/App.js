@@ -14,6 +14,7 @@ import { auth } from "./utils/firebase";
 import { Provider, useDispatch } from "react-redux";
 import appStore from "./utils/redux/appStore";
 import { addUserInfo } from "./utils/redux/slices/userSlice";
+import GameDetails from "./components/GameDetails/GameDetails";
 
 const Layout = () => {
   const navigate = useNavigate();
@@ -52,6 +53,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/home",
         element: <Home />,
+      },
+      {
+        path: "/game/:id",
+        element: <GameDetails />,
       },
     ],
   },

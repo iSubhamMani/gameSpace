@@ -5,14 +5,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "primary-color-light": "var(--primary-clr-light)",
-        "primary-color-dark": "var(--primary-clr-dark)",
-        "secondary-color-dark": "var(--secondary-clr-dark)",
         "accent-color": "var(--accent-clr)",
-        "primary-text-color": "var(--primary-text-clr)",
-        "primary-text-color-light": "var(--primary-text-clr-light)",
-        "bg-clr-light-1": "var(--bg-clr-light-1)",
-        "bg-clr-light-2": "var(--bg-clr-light-2)",
+        "primary-color": "var(--primary-clr)",
+        "bg-primary-clr-dark": "var(--bg-primary-clr-dark)",
+        "bg-secondary-clr-dark": "var(--bg-secondary-clr-dark)",
+        "text-clr-primary": "var(--text-clr-primary)",
+        "bg-primary-clr-light": "var(--bg-primary-clr-light)",
+        "bg-secondary-clr-light": "var(--bg-secondary-clr-light)",
       },
     },
   },

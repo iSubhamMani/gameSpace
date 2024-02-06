@@ -1,4 +1,5 @@
-import star from "../../assets/star.png";
+import { Link } from "react-router-dom";
+import arrow from "../../assets/right-arrow.png";
 
 const Game = ({ game }) => {
   const platforms = [];
@@ -8,46 +9,29 @@ const Game = ({ game }) => {
   game?.genres?.map((genre) => genres.push(genre.name));
 
   return (
-    <div
-      className="bg-[#f8f8f8] shadow-md dark:shadow-2xl dark:bg-primary-color-dark rounded-md overflow-hidden
-    border-b-4 border-b-primary-text-color"
-    >
-      <div className="h-[12rem] sm:h-[18rem] md:h-[20rem]">
-        <img
-          className="w-full h-full object-cover"
-          src={game?.background_image}
-          alt=""
-        />
-      </div>
+    <Link to={`/game/${game?.id}`}>
+      <div
+        className="game bg-[#f8f8f8] shadow-2xl dark:bg-primary-color-dark rounded-2xl overflow-hidden
+    relative"
+      >
+        <div className="h-[12rem] sm:h-[18rem] md:h-[20rem]">
+          <img
+            className="w-full h-full object-cover"
+            src={game?.background_image}
+            alt=""
+          />
+        </div>
 
-      <div className="px-5 py-4 flex flex-col gap-6">
-        <h3 className="text-black dark:text-white font-bold text-xl line-clamp-1">
-          {game?.name}
-        </h3>
-
-        <div className="flex flex-col gap-3">
-          <div className="dark:text-white font-medium text-sm line-clamp-1">
-            <p>{platforms.join(", ")}</p>
-          </div>
-          <div className="dark:text-white font-medium text-sm line-clamp-1">
-            <p>{genres.join(", ")}</p>
-          </div>
-          <div className="dark:text-white font-bold text-sm flex gap-1 items-center">
-            <span>{game?.rating}</span>
-            <img src={star} className="w-[0.9rem]" alt="" />
-            <span>( {game?.ratings_count} ratings )</span>
+        <div className="absolute bottom-0 left-0 px-4 pb-4 pt-2 w-full bg-gradient-to-t from-[#000] to-transparent flex gap-2 justify-between items-center">
+          <h3 className="text-text-clr-primary font-bold text-lg sm:text-xl line-clamp-1">
+            {game?.name}
+          </h3>
+          <div className="w-3 sm:w-4">
+            <img src={arrow} alt="" />
           </div>
         </div>
-        <div className="flex gap-4">
-          <button className="px-4 py-2 text-sm sm:text-[1rem] whitespace-nowrap text-primary-text-color hover:text-white font-bold border-2 border-primary-text-color rounded-full hover:bg-primary-text-color transition duration-200 ease-in-out">
-            More info
-          </button>
-          <button className="px-4 py-2 text-sm sm:text-[1rem] whitespace-nowrap text-accent-color hover:text-white font-extrabold border-2 border-accent-color rounded-full hover:bg-accent-color transition duration-200 ease-in-out">
-            Add to cart
-          </button>
-        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

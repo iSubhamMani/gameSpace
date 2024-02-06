@@ -4,7 +4,7 @@ import carouselData from "../../utils/carouselData";
 
 const Landing = () => {
   return (
-    <main className="dark:bg-gradient-to-l from-[#11111ff3] to-secondary-color-dark">
+    <main className="dark:bg-gradient-to-l from-bg-primary-clr-dark to-bg-secondary-clr-dark">
       <div className="h-[210px] sm:h-[300px] relative">
         <img
           className="w-full h-full object-cover brightness-[0.4]"
