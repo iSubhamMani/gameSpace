@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setHasCache } from "../../utils/redux/slices/feedResults";
+import { setHasSearchCache } from "../../utils/redux/slices/search";
 
 const GameDetails = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setHasCache(true));
+    dispatch(setHasSearchCache(true));
   }, []);
 
   return <div>GameDetails</div>;
