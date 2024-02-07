@@ -6,7 +6,7 @@ import {
   addResults,
   setHasFeedCache,
   setHasMore,
-} from "../utils/redux/slices/feedResults";
+} from "../utils/redux/slices/feed";
 
 const useGameFeed = (pageNumber) => {
   const dispatch = useDispatch();

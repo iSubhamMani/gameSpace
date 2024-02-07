@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { API_URL, PAGINATION_OFFSET } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
-import { setHasFeedCache } from "../utils/redux/slices/feedResults";
+import { setHasFeedCache } from "../utils/redux/slices/feed";
 import {
   addSearchResults,
   setHasMore,

@@ -1,7 +1,7 @@
 import { useCallback, useRef } from "react";
 import Game from "../Game/Game";
 import { useDispatch, useSelector } from "react-redux";
-import { updatePageNumber } from "../../utils/redux/slices/feedResults";
+import { updatePageNumber } from "../../utils/redux/slices/feed";
 import ShimmerLoading from "../Shimmer/ShimmerLoading";
 import useGameFeed from "../../hooks/useGameFeed";
 

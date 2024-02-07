@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userSlice from "./slices/userSlice";
-import feedResults from "./slices/feedResults";
+import feed from "./slices/feed";
 import search from "./slices/search";
 
 const appStore = configureStore({
   reducer: {
     user: userSlice,
-    feed: feedResults,
+    feed: feed,
     search: search,
   },
 });

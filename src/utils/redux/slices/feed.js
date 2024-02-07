@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const feedResults = createSlice({
+const feed = createSlice({
   name: "feed",
   initialState: {
     results: [],
@@ -33,5 +33,5 @@ export const {
   setHasMore,
   setHasFeedCache,
   setResults,
-} = feedResults.actions;
-export default feedResults.reducer;
+} = feed.actions;
+export default feed.reducer;
