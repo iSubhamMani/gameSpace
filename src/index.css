@@ -18,6 +18,13 @@ body {
   font-family: "Comfortaa", sans-serif;
 }
 
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px var(--bg-secondary-clr-dark) inset !important;
+  -webkit-text-fill-color: var(--primary-clr) !important;
+}
+
 .btn {
   border: 2px solid var(--accent-clr);
   background: linear-gradient(
