@@ -63,6 +63,17 @@ select:-webkit-autofill {
   transform: scale(0.95);
 }
 
+.loader {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 5px solid var(--primary-clr);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
 @media (min-width: 500px) {
   .games-container {
     display: grid;
@@ -71,5 +82,18 @@ select:-webkit-autofill {
   .game_screenshots {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
+  .loader {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

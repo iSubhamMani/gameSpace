@@ -1,70 +1,17 @@
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { setHasSearchCache } from "../../utils/redux/slices/search";
-import { setHasFeedCache } from "../../utils/redux/slices/feed";
-import axios from "axios";
-import { GAME_DETAILS_API_URL } from "../../utils/constants";
-import { ScrollRestoration, useParams } from "react-router-dom";
 import metacritic from "../../assets/metacritic.png";
 import star from "../../assets/favorite.png";
 import about from "../../assets/about.png";
 import screenshots from "../../assets/image.png";
+import Loader from "../Loader/Loader";
+import getPrice from "../../utils/getPrice";
+import useGameDetails from "../../hooks/useGameDetails";
 
 const GameDetails = () => {
-  const dispatch = useDispatch();
-  const [gameDetails, setGameDetails] = useState(null);
-  const [gameScreenshots, setGameScreenshots] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const { gameDetails, gameScreenshots, loading, error } = useGameDetails();
 
-  const { id } = useParams();
-
-  useEffect(() => {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-
-    dispatch(setHasSearchCache(true));
-    dispatch(setHasFeedCache(true));
-
-    getGameDetails();
-  }, []);
-
-  const getGameDetails = async () => {
-    setLoading(true);
-    setError(false);
-
-    try {
-      const res_details = await axios({
-        method: "GET",
-        url:
-          GAME_DETAILS_API_URL + id + "?key=cf090f9bdfb545a6ba8d26e867f31526",
-      });
-
-      const res_screenshots = await axios({
-        method: "GET",
-        url:
-          GAME_DETAILS_API_URL +
-          id +
-          "/screenshots?key=cf090f9bdfb545a6ba8d26e867f31526",
-      });
-
-      if (res_details) {
-        setGameDetails(res_details?.data);
-      }
-
-      if (res_screenshots) {
-        setGameScreenshots(res_screenshots?.data?.results);
-      }
-
-      if (res_details && res_screenshots) {
-        setLoading(false);
-      }
-    } catch (error) {
-      setError(true);
-    }
-  };
-
-  return (
+  return loading ? (
+    <Loader />
+  ) : (
     <div className="dark:bg-bg-secondary-clr-dark">
       <div className="relative h-[40vh] sm:h-[75vh]">
         <div className="h-full">
@@ -108,10 +55,11 @@ const GameDetails = () => {
           </div>
           <div>
             <button
-              className="px-4 py-2 sm:py-3 rounded-md bg-primary-color text-white hover:opacity-85 transition duration-200 ease-in-out font-bold sm:text-xl
+              className="px-4 py-2 sm:py-3 flex gap-1 sm:gap-2 rounded-md bg-primary-color text-white hover:scale-95 hover:opacity-85 transition duration-200 ease-in-out font-bold sm:text-xl
             "
             >
-              Purchase
+              <span>Buy</span>
+              <span>${getPrice(gameDetails?.rating)}</span>
             </button>
           </div>
         </div>
