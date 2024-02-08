@@ -15,6 +15,7 @@ import { Provider, useDispatch } from "react-redux";
 import appStore from "./utils/redux/appStore";
 import { addUserInfo } from "./utils/redux/slices/userSlice";
 import GameDetails from "./components/GameDetails/GameDetails";
+import CartDetails from "./components/Cart/CartDetails";
 
 const Layout = () => {
   const navigate = useNavigate();
@@ -57,6 +58,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/game/:id",
         element: <GameDetails />,
+      },
+      {
+        path: "/cart",
+        element: <CartDetails />,
       },
     ],
   },
