@@ -1,17 +1,14 @@
 import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { auth } from "../../utils/firebase";
-import { useDispatch, useSelector } from "react-redux";
-import { setResults } from "../../utils/redux/slices/feed";
+import { useSelector } from "react-redux";
 
 const Login = () => {
   const user = useSelector((store) => store.user);
-  const dispatch = useDispatch();
 
   const handleLogOut = () => {
     signOut(auth)
       .then(() => {
         // Sign-out successful
-        dispatch(setResults([]));
       })
       .catch((error) => {
         // An error happened.

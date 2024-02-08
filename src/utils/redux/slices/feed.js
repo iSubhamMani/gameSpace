@@ -18,6 +18,9 @@ const feed = createSlice({
     updatePageNumber: (state) => {
       state.pageNumber = state.pageNumber + 1;
     },
+    setPageNumber: (state, action) => {
+      state.pageNumber = action.payload;
+    },
     setHasMore: (state, action) => {
       state.hasMore = action.payload;
     },
@@ -30,6 +33,7 @@ const feed = createSlice({
 export const {
   addResults,
   updatePageNumber,
+  setPageNumber,
   setHasMore,
   setHasFeedCache,
   setResults,

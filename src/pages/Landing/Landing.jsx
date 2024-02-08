@@ -1,8 +1,24 @@
+import { useEffect } from "react";
 import Carousel from "../../components/Carousel/Carousel";
 import DiscoverGames from "../../components/DiscoverGames/DiscoverGames";
 import carouselData from "../../utils/carouselData";
+import { useDispatch } from "react-redux";
+import {
+  setHasFeedCache,
+  setHasMore,
+  setPageNumber,
+  setResults,
+} from "../../utils/redux/slices/feed";
 
 const Landing = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setResults([]));
+    dispatch(setHasFeedCache(false));
+    dispatch(setHasMore(false));
+    dispatch(setPageNumber(1));
+  }, []);
+
   return (
     <main className="dark:bg-gradient-to-l from-bg-primary-clr-dark to-bg-secondary-clr-dark">
       <div className="h-[210px] sm:h-[300px] relative">
