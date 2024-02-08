@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import Login from "../Login/Login";
+import Cart from "../Cart/Cart";
 
 const Navbar = () => {
   return (
@@ -8,12 +10,16 @@ const Navbar = () => {
     >
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="font-bold text-xl sm:text-3xl text-primary-color">
-            gameSpace
-          </h2>
+          <Link to="/home">
+            <h2 className="font-bold text-xl sm:text-3xl text-primary-color">
+              gameSpace
+            </h2>
+          </Link>
         </div>
-
-        <Login />
+        <div className="flex items-center gap-4 sm:gap-6 md:gap-8">
+          <Cart />
+          <Login />
+        </div>
       </div>
     </nav>
   );
