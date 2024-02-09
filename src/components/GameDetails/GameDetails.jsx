@@ -29,7 +29,7 @@ const GameDetails = () => {
         id: gameDetails?.id,
         name: gameDetails?.name,
         price: price,
-        image: gameDetails?.background_image,
+        background_image: gameDetails?.background_image,
       })
     );
   };
@@ -37,7 +37,7 @@ const GameDetails = () => {
   return loading ? (
     <Loader />
   ) : (
-    <div className="dark:bg-bg-secondary-clr-dark">
+    <div className="bg-bg-secondary-clr-light dark:bg-bg-secondary-clr-dark">
       <div className="relative h-[40vh] sm:h-[75vh]">
         <div className="h-full">
           <img
@@ -46,7 +46,7 @@ const GameDetails = () => {
             alt=""
           />
         </div>
-        <div className="w-full gap-2 flex flex-col sm:flex-row items-start justify-between p-4 sm:p-8 md:p-12 absolute bottom-0 left-0 bg-gradient-to-t from-bg-secondary-clr-dark to-transparent">
+        <div className="w-full gap-2 flex flex-col sm:flex-row items-start justify-between p-4 sm:p-8 md:p-12 absolute bottom-0 left-0 bg-gradient-to-t from-bg-secondary-clr-light dark:from-bg-secondary-clr-dark to-transparent">
           <div>
             <div>
               <h3 className="text-2xl sm:text-4xl md:text-5xl text-text-clr-primary font-extrabold">
@@ -106,24 +106,24 @@ const GameDetails = () => {
                 Description
               </span>
             </div>
-            <div className="text-text-clr-primary text-sm sm:text-lg md:text-xl font-bold lg:w-[70%]">
+            <div className="text-black dark:text-text-clr-primary text-sm sm:text-lg md:text-xl font-bold lg:w-[70%]">
               {gameDetails?.description_raw}
             </div>
           </div>
           <div className="mt-6 sm:mt-8">
-            <p className="text-text-clr-primary font-bold text-sm sm:text-lg md:text-xl">
+            <p className="text-black dark:text-text-clr-primary font-bold text-sm sm:text-lg md:text-xl">
               <span className="text-primary-color">Release Date:</span>{" "}
               <span className="font-medium">{gameDetails?.released}</span>
             </p>
           </div>
           <div className="mt-1">
-            <p className="text-text-clr-primary font-medium text-sm sm:text-lg md:text-xl">
+            <p className="text-black dark:text-text-clr-primary font-medium text-sm sm:text-lg md:text-xl">
               <span className="text-primary-color">Developers:</span>{" "}
               {gameDetails?.developers.map((dev) => dev.name).join(", ")}
             </p>
           </div>
           <div className="mt-1">
-            <p className="text-text-clr-primary font-medium text-sm sm:text-lg md:text-xl">
+            <p className="text-black dark:text-text-clr-primary font-medium text-sm sm:text-lg md:text-xl">
               <span className="text-primary-color">Genres:</span>{" "}
               {gameDetails?.genres.map((genre) => genre.name).join(", ")}
             </p>
@@ -139,7 +139,10 @@ const GameDetails = () => {
           <div className="game_screenshots">
             {gameScreenshots?.map((gameSs) => {
               return (
-                <div key={gameSs?.id} className="rounded-md overflow-hidden">
+                <div
+                  key={gameSs?.id}
+                  className="rounded-md overflow-hidden shadow-md"
+                >
                   <img
                     className="h-full w-full object-cover"
                     src={gameSs?.image}
