@@ -3,11 +3,36 @@ import star from "../../assets/favorite.png";
 import about from "../../assets/about.png";
 import screenshots from "../../assets/image.png";
 import Loader from "../Loader/Loader";
-import getPrice from "../../utils/getPrice";
 import useGameDetails from "../../hooks/useGameDetails";
+import { useDispatch, useSelector } from "react-redux";
+import { addCartItems } from "../../utils/redux/slices/cart";
+import { useEffect, useState } from "react";
+import { Check } from "react-feather";
 
 const GameDetails = () => {
-  const { gameDetails, gameScreenshots, loading, error } = useGameDetails();
+  const { gameDetails, gameScreenshots, loading, error, price } =
+    useGameDetails();
+
+  const { cartItems } = useSelector((store) => store.cart);
+
+  const [inCart, setInCart] = useState(false);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    setInCart(cartItems.some((item) => item.id === gameDetails?.id));
+  }, [cartItems, gameDetails]);
+
+  const addItemToCart = () => {
+    dispatch(
+      addCartItems({
+        id: gameDetails?.id,
+        name: gameDetails?.name,
+        price: price,
+        image: gameDetails?.background_image,
+      })
+    );
+  };
 
   return loading ? (
     <Loader />
@@ -54,13 +79,21 @@ const GameDetails = () => {
             </div>
           </div>
           <div>
-            <button
-              className="px-4 py-2 sm:py-3 flex gap-1 sm:gap-2 rounded-md bg-primary-color text-white hover:scale-95 hover:opacity-85 transition duration-200 ease-in-out font-bold sm:text-xl
+            {inCart ? (
+              <button className="px-4 py-2 sm:py-3 flex gap-1 items-start sm:gap-2 rounded-md bg-primary-color hover:cursor-default text-white font-bold sm:text-xl">
+                <span>Added to cart</span>
+                <Check />
+              </button>
+            ) : (
+              <button
+                onClick={addItemToCart}
+                className="px-4 py-2 sm:py-3 flex gap-1 items-start sm:gap-2 rounded-md bg-primary-color text-white hover:scale-95 hover:opacity-85 transition duration-200 ease-in-out font-bold sm:text-xl
             "
-            >
-              <span>Buy</span>
-              <span>${getPrice(gameDetails?.rating)}</span>
-            </button>
+              >
+                <span>Buy</span>
+                <span>${price}</span>
+              </button>
+            )}
           </div>
         </div>
       </div>
