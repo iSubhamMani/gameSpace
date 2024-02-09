@@ -5,17 +5,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { GAME_DETAILS_API_URL } from "../utils/constants";
 import axios from "axios";
+import getPrice from "../utils/getPrice";
 
 const useGameDetails = () => {
   const dispatch = useDispatch();
   const [gameDetails, setGameDetails] = useState(null);
   const [gameScreenshots, setGameScreenshots] = useState([]);
+  const [price, setPrice] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   const { searchQuery } = useSelector((store) => store.search);
 
   const { id } = useParams();
+
+  useEffect(() => {
+    setPrice(getPrice(gameDetails?.rating));
+  }, [gameDetails]);
 
   useEffect(() => {
     document.body.scrollTop = 0;
@@ -62,7 +68,7 @@ const useGameDetails = () => {
     }
   };
 
-  return { gameDetails, gameScreenshots, loading, error };
+  return { gameDetails, gameScreenshots, loading, error, price };
 };
 
 export default useGameDetails;
