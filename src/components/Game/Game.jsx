@@ -2,12 +2,6 @@ import { Link } from "react-router-dom";
 import arrow from "../../assets/right-arrow.png";
 
 const Game = ({ game }) => {
-  const platforms = [];
-  const genres = [];
-
-  game?.platforms?.map((platform) => platforms.push(platform.platform?.name));
-  game?.genres?.map((genre) => genres.push(genre.name));
-
   return (
     <Link to={`/game/${game?.id}`}>
       <div
