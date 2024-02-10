@@ -1,7 +1,5 @@
 import { useEffect } from "react";
-import Carousel from "../../components/Carousel/Carousel";
 import DiscoverGames from "../../components/DiscoverGames/DiscoverGames";
-import carouselData from "../../utils/carouselData";
 import { useDispatch } from "react-redux";
 import {
   setHasFeedCache,
@@ -21,10 +19,10 @@ const Landing = () => {
 
   return (
     <main className="dark:bg-gradient-to-l from-bg-primary-clr-dark to-bg-secondary-clr-dark">
-      <div className="h-[210px] sm:h-[300px] relative">
+      <div className="h-[260px] sm:h-[400px] lg:h-[600px] relative">
         <img
           className="w-full h-full object-cover brightness-[0.4]"
-          src="https://images.hdqwalls.com/download/for-honor-game-2048x1152.jpg"
+          src="https://r4.wallpaperflare.com/wallpaper/589/37/106/red-dead-3-rockstar-games-red-dead-redemption-2-red-dead-redemption-wallpaper-d960a8bd112aeddba697983f305166cd.jpg"
           alt=""
         />
         <div className="absolute top-0 pt-[2rem] left-0 pl-[2rem] h-full bg-gradient-to-r from-black to-transparent">
@@ -37,20 +35,6 @@ const Landing = () => {
         </div>
       </div>
       <div className="px-6 py-8">
-        <div className="flex flex-col items-center">
-          <div className="max-w-[1152px] min-w-[250px] rounded-lg overflow-hidden shadow-2xl">
-            <Carousel>
-              {carouselData.map((carousel) => (
-                <img
-                  className="brightness-[0.8]"
-                  src={carousel.imageUrl}
-                  key={carousel.id}
-                  alt=""
-                />
-              ))}
-            </Carousel>
-          </div>
-        </div>
         <DiscoverGames />
       </div>
     </main>

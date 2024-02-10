@@ -27,7 +27,10 @@ const LazyImage = ({ img }) => {
   return inView ? (
     <img ref={ref} src={img} className="w-full h-full object-cover" alt="" />
   ) : (
-    <img ref={ref} className="w-full h-full object-cover" alt="" />
+    <div
+      ref={ref}
+      className="h-[12rem] sm:h-[18rem] md:h-[20rem] bg-slate-100"
+    ></div>
   );
 };
 
