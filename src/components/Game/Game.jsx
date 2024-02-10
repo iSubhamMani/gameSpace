@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import arrow from "../../assets/right-arrow.png";
+import LazyImage from "../LazyImage";
 
 const Game = ({ game }) => {
   return (
@@ -9,11 +10,7 @@ const Game = ({ game }) => {
     relative"
       >
         <div className="h-[12rem] sm:h-[18rem] md:h-[20rem]">
-          <img
-            className="w-full h-full object-cover"
-            src={game?.background_image}
-            alt=""
-          />
+          <LazyImage img={game?.background_image} />
         </div>
 
         <div className="absolute bottom-0 left-0 px-4 pb-4 pt-2 w-full bg-gradient-to-t from-[#000] to-transparent flex gap-2 justify-between items-center">
