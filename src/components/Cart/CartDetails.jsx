@@ -32,7 +32,7 @@ const CartDetails = () => {
       </div>
       <div className="games-container md:flex-1 gap-6 md:gap-7">
         {cartItems.map((item) => {
-          return <CartItem game={item} />;
+          return <CartItem key={item.id} game={item} />;
         })}
       </div>
     </div>

@@ -33,8 +33,8 @@ const SearchResults = ({ searchQuery }) => {
       {searchResults?.map((game, index) => {
         if (searchResults.length === index + 1) {
           return (
-            <div ref={lastGameElementRef}>
-              <Game key={game?.id} game={game} />
+            <div key={game?.id} ref={lastGameElementRef}>
+              <Game game={game} />
             </div>
           );
         }
