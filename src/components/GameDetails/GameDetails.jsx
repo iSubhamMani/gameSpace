@@ -37,7 +37,7 @@ const GameDetails = () => {
   return loading ? (
     <Loader />
   ) : (
-    <div className="bg-bg-secondary-clr-light dark:bg-bg-secondary-clr-dark">
+    <div className="bg-bg-secondary-clr-light dark:bg-bg-secondary-clr-dark flex-1">
       <div className="relative h-[40vh] sm:h-[75vh]">
         <div className="h-full">
           <img

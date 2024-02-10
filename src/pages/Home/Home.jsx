@@ -22,7 +22,7 @@ const Home = () => {
   return (
     <div
       className="px-4 sm:px-8 py-4 bg-bg-secondary-clr-light
-    dark:bg-bg-secondary-clr-dark bg-bg-clr-light"
+    dark:bg-bg-secondary-clr-dark bg-bg-clr-light flex-1"
     >
       <div className="px-6 py-2 flex gap-3 justify-between w-full sm:max-w-[400px] my-8 items-center border-2 border-primary-color rounded-full">
         <input

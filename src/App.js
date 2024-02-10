@@ -34,7 +34,7 @@ const Layout = () => {
   }, []);
 
   return (
-    <div className="app">
+    <div className="app flex flex-col">
       <Navbar />
       <Outlet />
       <Footer />
