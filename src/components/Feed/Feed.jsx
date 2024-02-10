@@ -31,8 +31,8 @@ const Feed = () => {
       {results?.map((game, index) => {
         if (results.length === index + 1) {
           return (
-            <div ref={lastGameElementRef}>
-              <Game key={game?.id} game={game} />
+            <div key={game?.id} ref={lastGameElementRef}>
+              <Game game={game} />
             </div>
           );
         }
