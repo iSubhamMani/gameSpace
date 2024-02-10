@@ -26,7 +26,7 @@ const CartDetails = () => {
   ) : (
     <div className="min-h-[80vh] px-4 sm:px-8 pb-8 bg-bg-secondary-clr-light dark:bg-bg-secondary-clr-dark ">
       <div className="py-8">
-        <h3 className="text-lg sm:text-2xl text-text-clr-primary font-medium">
+        <h3 className="text-lg sm:text-2xl text-black dark:text-text-clr-primary font-medium">
           Cart Details
         </h3>
       </div>

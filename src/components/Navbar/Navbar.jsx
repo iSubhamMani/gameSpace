@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Login from "../Login/Login";
 import Cart from "../Cart/Cart";
+import ThemeHandler from "../Theme/ThemeHandler";
 
 const Navbar = () => {
   return (
@@ -17,6 +18,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="flex items-center gap-4 sm:gap-6 md:gap-8">
+          <ThemeHandler />
           <Cart />
           <Login />
         </div>

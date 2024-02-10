@@ -1,6 +1,7 @@
 import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { auth } from "../../utils/firebase";
 import { useSelector } from "react-redux";
+import logout from "../../assets/logout.png";
 
 const Login = () => {
   const user = useSelector((store) => store.user);
@@ -27,11 +28,8 @@ const Login = () => {
   return (
     <div>
       {user?.userInfo ? (
-        <button
-          onClick={handleLogOut}
-          className="btn px-2 sm:px-4 py-[0.2em] sm:py-1 text-sm sm:text-lg font-bold rounded-md"
-        >
-          Log out
+        <button onClick={handleLogOut} className="w-5 sm:w-7 flex items-center">
+          <img src={logout} alt="" />
         </button>
       ) : (
         <button
