@@ -24,7 +24,12 @@ const Layout = () => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        dispatch(addUserInfo(user));
+        dispatch(
+          addUserInfo({
+            uid: user.uid,
+            name: user.displayName,
+          })
+        );
         navigate("/home");
       } else {
         dispatch(addUserInfo(null));
