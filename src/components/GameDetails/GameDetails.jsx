@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addCartItems } from "../../utils/redux/slices/cart";
 import { useEffect, useState } from "react";
 import { Check } from "react-feather";
+import LazyImage from "../LazyImage";
 
 const GameDetails = () => {
   const { gameDetails, gameScreenshots, loading, error, price } =
@@ -143,11 +144,7 @@ const GameDetails = () => {
                   key={gameSs?.id}
                   className="rounded-md overflow-hidden shadow-md"
                 >
-                  <img
-                    className="h-full w-full object-cover"
-                    src={gameSs?.image}
-                    alt=""
-                  />
+                  <LazyImage img={gameSs?.image} />
                 </div>
               );
             })}
