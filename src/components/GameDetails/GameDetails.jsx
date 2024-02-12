@@ -109,17 +109,25 @@ const GameDetails = () => {
           </div>
           <div className="mt-6 sm:mt-8">
             <p className="text-black dark:text-text-clr-primary font-bold text-sm sm:text-lg md:text-xl">
+              <span className="text-primary-color">Platforms:</span>{" "}
+              {gameDetails?.platforms
+                .map((platform) => platform.platform.name)
+                .join(", ")}
+            </p>
+          </div>
+          <div className="mt-2">
+            <p className="text-black dark:text-text-clr-primary font-bold text-sm sm:text-lg md:text-xl">
               <span className="text-primary-color">Release Date:</span>{" "}
               <span className="font-medium">{gameDetails?.released}</span>
             </p>
           </div>
-          <div className="mt-1">
+          <div className="mt-2">
             <p className="text-black dark:text-text-clr-primary font-medium text-sm sm:text-lg md:text-xl">
               <span className="text-primary-color">Developers:</span>{" "}
               {gameDetails?.developers.map((dev) => dev.name).join(", ")}
             </p>
           </div>
-          <div className="mt-1">
+          <div className="mt-2">
             <p className="text-black dark:text-text-clr-primary font-medium text-sm sm:text-lg md:text-xl">
               <span className="text-primary-color">Genres:</span>{" "}
               {gameDetails?.genres.map((genre) => genre.name).join(", ")}
@@ -138,7 +146,7 @@ const GameDetails = () => {
               return (
                 <div
                   key={gameSs?.id}
-                  className="bg-[#b8b8c5] dark:bg-[#3e3e45] rounded-md overflow-hidden shadow-md min-h-[200px]"
+                  className="bg-[#b8b8c5] dark:bg-[#3e3e45] rounded-md overflow-hidden shadow-md min-h-[150px] sm:min-h-[200px]"
                 >
                   <LazyImage img={gameSs?.image} />
                 </div>
