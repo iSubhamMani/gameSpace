@@ -34,7 +34,7 @@ const ThemeHandler = () => {
           ? dispatch(setTheme("dark"))
           : dispatch(setTheme("light"))
       }
-      className="w-5 sm:w-7 hover:scale-90 transition duration-200 ease-in-out hover:cursor-pointer flex items-center"
+      className="w-[18px] sm:w-7 hover:scale-90 transition duration-200 ease-in-out hover:cursor-pointer flex items-center"
     >
       <img src={theme === "light" ? dark : light} alt="" />
     </div>
