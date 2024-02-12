@@ -2,7 +2,7 @@ import React from "react";
 import { Trash } from "react-feather";
 import { useDispatch } from "react-redux";
 import { deleteCartItem } from "../../utils/redux/slices/cart";
-import LazyImage from "../LazyImage";
+import LazyImage from "../LazyImage/LazyImage";
 
 const CartItem = ({ game }) => {
   const dispatch = useDispatch();

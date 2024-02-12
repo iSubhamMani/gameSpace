@@ -1,5 +1,5 @@
-import Feed from "../../components/Feed/Feed";
-import SearchResults from "../../components/SearchResults/SearchResults";
+import Feed from "../Feed/Feed";
+import SearchResults from "../SearchResults/SearchResults";
 import search from "../../assets/search.png";
 import { useDispatch, useSelector } from "react-redux";
 import { setSearchQuery } from "../../utils/redux/slices/search";

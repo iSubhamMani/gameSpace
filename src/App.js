@@ -14,8 +14,8 @@ import { auth } from "./utils/firebase";
 import { Provider, useDispatch } from "react-redux";
 import appStore from "./utils/redux/appStore";
 import { addUserInfo } from "./utils/redux/slices/userSlice";
-import GameDetails from "./components/GameDetails/GameDetails";
-import CartDetails from "./components/Cart/CartDetails";
+import GameDetails from "./pages/GameDetails/GameDetails";
+import CartDetails from "./pages/CartDetails/CartDetails";
 
 const Layout = () => {
   const navigate = useNavigate();

@@ -1,17 +1,19 @@
 import { useCallback, useRef } from "react";
-import Game from "../Game/Game";
+import Game from "../../components/Game/Game";
+import ShimmerLoading from "../../components/Shimmer/ShimmerLoading";
 import { useDispatch, useSelector } from "react-redux";
-import { updatePageNumber } from "../../utils/redux/slices/feed";
-import ShimmerLoading from "../Shimmer/ShimmerLoading";
-import useGameFeed from "../../hooks/useGameFeed";
+import { updatePageNumber } from "../../utils/redux/slices/search";
+import useGameSearch from "../../hooks/useGameSearch";
 
-const Feed = () => {
-  const dispatch = useDispatch();
+const SearchResults = ({ searchQuery }) => {
   const observer = useRef();
+  const dispatch = useDispatch();
 
-  const { results, pageNumber, hasMore } = useSelector((store) => store.feed);
+  const { searchResults, pageNumber, hasMore } = useSelector(
+    (store) => store.search
+  );
 
-  const { loading, error } = useGameFeed(pageNumber);
+  const { loading, error } = useGameSearch(searchQuery, pageNumber);
 
   const lastGameElementRef = useCallback(
     (node) => {
@@ -27,9 +29,9 @@ const Feed = () => {
   );
 
   return (
-    <div className="games-container md:flex-1 gap-6 md:gap-7">
-      {results?.map((game, index) => {
-        if (results.length === index + 1) {
+    <div className="games-container md:flex-1 gap-6">
+      {searchResults?.map((game, index) => {
+        if (searchResults.length === index + 1) {
           return (
             <div key={game?.id} ref={lastGameElementRef}>
               <Game game={game} />
@@ -47,4 +49,4 @@ const Feed = () => {
   );
 };
 
-export default Feed;
+export default SearchResults;

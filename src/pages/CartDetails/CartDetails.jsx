@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setHasSearchCache } from "../../utils/redux/slices/search";
 import { setHasFeedCache } from "../../utils/redux/slices/feed";
-import CartItem from "./CartItem";
+import CartItem from "../../components/Cart/CartItem";
 
 const CartDetails = () => {
   const dispatch = useDispatch();

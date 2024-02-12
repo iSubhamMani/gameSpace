@@ -2,13 +2,13 @@ import metacritic from "../../assets/metacritic.png";
 import star from "../../assets/favorite.png";
 import about from "../../assets/about.png";
 import screenshots from "../../assets/image.png";
-import Loader from "../Loader/Loader";
+import Loader from "../../components/Loader/Loader";
 import useGameDetails from "../../hooks/useGameDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { addCartItems } from "../../utils/redux/slices/cart";
 import { useEffect, useState } from "react";
 import { Check } from "react-feather";
-import LazyImage from "../LazyImage";
+import LazyImage from "../../components/LazyImage/LazyImage";
 
 const GameDetails = () => {
   const { gameDetails, gameScreenshots, loading, error, price } =

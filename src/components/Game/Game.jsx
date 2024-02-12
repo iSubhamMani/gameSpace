@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import arrow from "../../assets/right-arrow.png";
-import LazyImage from "../LazyImage";
+import LazyImage from "../LazyImage/LazyImage";
 
 const Game = ({ game }) => {
   return (

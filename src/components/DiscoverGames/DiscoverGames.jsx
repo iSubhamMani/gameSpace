@@ -1,5 +1,5 @@
 import genreData from "../../utils/genreData";
-import LazyImage from "../LazyImage";
+import LazyImage from "../LazyImage/LazyImage";
 
 const DiscoverGames = () => {
   return (
