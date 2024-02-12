@@ -26,18 +26,23 @@ const LazyImage = ({ img }) => {
   }, []);
 
   return inView ? (
-    <img
-      style={loaded ? { opacity: 1 } : { opacity: 0 }}
-      onLoad={() => setLoaded(true)}
-      ref={ref}
-      src={img}
-      className="bg-bg-primary-clr-light dark:bg-bg-primary-clr-dark w-full h-full object-cover transition duration-500 ease-in-out"
-      alt=""
-    />
+    <div className="w-full h-full relative">
+      {!loaded && (
+        <span className="image-loader absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></span>
+      )}
+      <img
+        style={loaded ? { opacity: 1 } : { opacity: 0 }}
+        onLoad={() => setLoaded(true)}
+        ref={ref}
+        src={img}
+        className="w-full h-full object-cover transition duration-500 ease-in-out"
+        alt=""
+      />
+    </div>
   ) : (
     <div
       ref={ref}
-      className="h-[12rem] sm:h-[18rem] md:h-[20rem] bg-[#cbcbd4] dark:bg-[#3e3e45]"
+      className="h-[12rem] sm:h-[18rem] md:h-[20rem] bg-white"
     ></div>
   );
 };
