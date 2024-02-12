@@ -10,7 +10,7 @@ const ThemeHandler = () => {
   const element = document.documentElement;
 
   useEffect(() => {
-    if (localStorage.getItem("theme") === "dark") {
+    if (localStorage.getItem("theme") === "light") {
       setTheme(localStorage.getItem("theme"));
     }
   }, []);
