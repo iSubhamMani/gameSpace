@@ -138,7 +138,7 @@ const GameDetails = () => {
               return (
                 <div
                   key={gameSs?.id}
-                  className="rounded-md overflow-hidden shadow-md"
+                  className="bg-[#b8b8c5] dark:bg-[#3e3e45] rounded-md overflow-hidden shadow-md min-h-[200px]"
                 >
                   <LazyImage img={gameSs?.image} />
                 </div>
