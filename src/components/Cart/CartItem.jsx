@@ -2,6 +2,7 @@ import React from "react";
 import { Trash } from "react-feather";
 import { useDispatch } from "react-redux";
 import { deleteCartItem } from "../../utils/redux/slices/cart";
+import LazyImage from "../LazyImage";
 
 const CartItem = ({ game }) => {
   const dispatch = useDispatch();
@@ -13,11 +14,7 @@ const CartItem = ({ game }) => {
       relative"
       >
         <div className="h-[12rem] sm:h-[18rem] md:h-[20rem]">
-          <img
-            className="w-full h-full object-cover"
-            src={game?.background_image}
-            alt=""
-          />
+          <LazyImage img={game?.background_image} alt="" />
         </div>
         <div className="absolute bottom-0 left-0 px-4 pb-4 pt-2 w-full bg-gradient-to-t from-[#000] to-transparent flex gap-2 justify-between items-center">
           <h3 className="text-text-clr-primary font-bold text-lg sm:text-xl line-clamp-1">

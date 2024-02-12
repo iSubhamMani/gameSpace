@@ -40,12 +40,8 @@ const GameDetails = () => {
   ) : (
     <div className="bg-bg-secondary-clr-light dark:bg-bg-secondary-clr-dark flex-1">
       <div className="relative h-[40vh] sm:h-[75vh]">
-        <div className="h-full">
-          <img
-            className="brightness-[45%] w-full h-full object-cover"
-            src={gameDetails?.background_image}
-            alt=""
-          />
+        <div className="h-full brightness-[45%]">
+          <LazyImage img={gameDetails?.background_image} />
         </div>
         <div className="w-full gap-2 flex flex-col sm:flex-row items-start justify-between p-4 sm:p-8 md:p-12 absolute bottom-0 left-0 bg-gradient-to-t from-bg-secondary-clr-light dark:from-bg-secondary-clr-dark to-transparent">
           <div>
