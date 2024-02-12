@@ -9,6 +9,7 @@ import { addCartItems } from "../../utils/redux/slices/cart";
 import { useEffect, useState } from "react";
 import { Check } from "react-feather";
 import LazyImage from "../../components/LazyImage/LazyImage";
+import ContentError from "../../components/Error/ContentError";
 
 const GameDetails = () => {
   const { gameDetails, gameScreenshots, loading, error, price } =
@@ -36,7 +37,10 @@ const GameDetails = () => {
   };
 
   return loading ? (
-    <Loader />
+    <div className="gap-8 bg-bg-secondary-clr-light dark:bg-bg-secondary-clr-dark flex-1 flex flex-col justify-center items-center">
+      <Loader />
+      {error && <ContentError />}
+    </div>
   ) : (
     <div className="bg-bg-secondary-clr-light dark:bg-bg-secondary-clr-dark flex-1">
       <div className="relative h-[40vh] sm:h-[75vh]">

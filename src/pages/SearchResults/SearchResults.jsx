@@ -4,6 +4,7 @@ import ShimmerLoading from "../../components/Shimmer/ShimmerLoading";
 import { useDispatch, useSelector } from "react-redux";
 import { updatePageNumber } from "../../utils/redux/slices/search";
 import useGameSearch from "../../hooks/useGameSearch";
+import ContentError from "../../components/Error/ContentError";
 
 const SearchResults = ({ searchQuery }) => {
   const observer = useRef();
@@ -28,7 +29,11 @@ const SearchResults = ({ searchQuery }) => {
     [loading]
   );
 
-  return (
+  return error ? (
+    <div className="mt-12 bg-bg-secondary-clr-light dark:bg-bg-secondary-clr-dark flex-1 flex justify-center">
+      {error && <ContentError />}
+    </div>
+  ) : (
     <div className="games-container md:flex-1 gap-6">
       {searchResults?.map((game, index) => {
         if (searchResults.length === index + 1) {

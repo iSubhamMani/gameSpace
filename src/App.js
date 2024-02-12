@@ -16,6 +16,7 @@ import appStore from "./utils/redux/appStore";
 import { addUserInfo } from "./utils/redux/slices/userSlice";
 import GameDetails from "./pages/GameDetails/GameDetails";
 import CartDetails from "./pages/CartDetails/CartDetails";
+import UndefinedPage from "./components/Error/UndefinedPage";
 
 const Layout = () => {
   const navigate = useNavigate();
@@ -69,6 +70,7 @@ const appRouter = createBrowserRouter([
         element: <CartDetails />,
       },
     ],
+    errorElement: <UndefinedPage />,
   },
 ]);
 

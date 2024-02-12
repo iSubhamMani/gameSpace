@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updatePageNumber } from "../../utils/redux/slices/feed";
 import ShimmerLoading from "../../components/Shimmer/ShimmerLoading";
 import useGameFeed from "../../hooks/useGameFeed";
+import ContentError from "../../components/Error/ContentError";
 
 const Feed = () => {
   const dispatch = useDispatch();
@@ -26,7 +27,11 @@ const Feed = () => {
     [loading]
   );
 
-  return (
+  return error ? (
+    <div className="mt-12 bg-bg-secondary-clr-light dark:bg-bg-secondary-clr-dark flex-1 flex justify-center">
+      {error && <ContentError />}
+    </div>
+  ) : (
     <div className="games-container md:flex-1 gap-6 md:gap-7">
       {results?.map((game, index) => {
         if (results.length === index + 1) {
