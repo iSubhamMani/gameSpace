@@ -1,7 +1,7 @@
 const genreData = [
   {
     imageUrl:
-      "https://wallpapers.net/bioshock-infinite-hd-wallpaper/download/1280x720.jpg",
+      "https://wallpaperfx.com/view_image/assassins-creed-iv-black-flag-1280x720-wallpaper-12459.jpg",
   },
   {
     imageUrl: "https://eskipaper.com/images/journey-game-11.jpg",
