@@ -28,7 +28,7 @@ const ThemeHandler = () => {
   return user?.userInfo ? (
     <div
       onClick={() => (theme === "light" ? setTheme("dark") : setTheme("light"))}
-      className="w-5 sm:w-7 hover:cursor-pointer flex items-center"
+      className="w-5 sm:w-7 hover:scale-90 transition duration-200 ease-in-out hover:cursor-pointer flex items-center"
     >
       <img src={theme === "light" ? dark : light} alt="" />
     </div>

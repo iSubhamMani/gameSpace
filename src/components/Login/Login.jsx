@@ -28,7 +28,10 @@ const Login = () => {
   return (
     <div>
       {user?.userInfo ? (
-        <button onClick={handleLogOut} className="w-5 sm:w-7 flex items-center">
+        <button
+          onClick={handleLogOut}
+          className="w-5 sm:w-7 hover:scale-90 transition duration-200 ease-in-out flex items-center"
+        >
           <img src={logout} alt="" />
         </button>
       ) : (
