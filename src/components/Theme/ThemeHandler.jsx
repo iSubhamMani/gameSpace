@@ -1,17 +1,19 @@
 import light from "../../assets/light.png";
 import dark from "../../assets/dark.png";
-import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { setTheme } from "../../utils/redux/slices/app";
 
 const ThemeHandler = () => {
   const user = useSelector((store) => store.user);
+  const { theme } = useSelector((store) => store.app);
 
-  const [theme, setTheme] = useState("dark");
+  const dispatch = useDispatch();
   const element = document.documentElement;
 
   useEffect(() => {
     if (localStorage.getItem("theme") === "light") {
-      setTheme(localStorage.getItem("theme"));
+      dispatch(setTheme(localStorage.getItem("theme")));
     }
   }, []);
 
@@ -27,7 +29,11 @@ const ThemeHandler = () => {
 
   return user?.userInfo ? (
     <div
-      onClick={() => (theme === "light" ? setTheme("dark") : setTheme("light"))}
+      onClick={() =>
+        theme === "light"
+          ? dispatch(setTheme("dark"))
+          : dispatch(setTheme("light"))
+      }
       className="w-5 sm:w-7 hover:scale-90 transition duration-200 ease-in-out hover:cursor-pointer flex items-center"
     >
       <img src={theme === "light" ? dark : light} alt="" />
