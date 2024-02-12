@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 const LazyImage = ({ img }) => {
   const ref = useRef();
   const [inView, setInView] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   const callback = (entries, observer) => {
     entries.forEach((entry) => {
@@ -25,11 +26,18 @@ const LazyImage = ({ img }) => {
   }, []);
 
   return inView ? (
-    <img ref={ref} src={img} className="w-full h-full object-cover" alt="" />
+    <img
+      style={loaded ? { opacity: 1 } : { opacity: 0 }}
+      onLoad={() => setLoaded(true)}
+      ref={ref}
+      src={img}
+      className="bg-bg-primary-clr-light dark:bg-bg-primary-clr-dark w-full h-full object-cover transition duration-500 ease-in-out"
+      alt=""
+    />
   ) : (
     <div
       ref={ref}
-      className="h-[12rem] sm:h-[18rem] md:h-[20rem] bg-slate-100"
+      className="h-[12rem] sm:h-[18rem] md:h-[20rem] bg-[#cbcbd4] dark:bg-[#3e3e45]"
     ></div>
   );
 };
