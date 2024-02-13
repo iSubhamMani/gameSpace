@@ -5,17 +5,19 @@
 @tailwind utilities;
 
 :root {
-  --bg-primary-clr-dark: #1c1c1f;
+  --bg-primary-clr-dark: #222227;
   --bg-secondary-clr-dark: #151515;
   --accent-clr: #f86551;
   --text-clr-primary: #fff;
   --primary-clr: #1260e8;
-  --bg-primary-clr-light: #f7f7f7;
-  --bg-secondary-clr-light: #efefef;
+  --bg-primary-clr-light: #f9f5f6;
+  --bg-secondary-clr-light: #ffffff;
 }
 
 body {
   font-family: "Comfortaa", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
 .app {

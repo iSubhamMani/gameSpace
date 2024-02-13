@@ -18,7 +18,7 @@ const Landing = () => {
   }, []);
 
   return (
-    <main className="dark:bg-gradient-to-l from-bg-primary-clr-dark to-bg-secondary-clr-dark">
+    <main className="bg-bg-secondary-clr-light dark:bg-bg-secondary-clr-dark">
       <div className="h-[260px] sm:h-[400px] lg:h-[600px] relative">
         <img
           className="w-full h-full object-cover brightness-[0.4]"
