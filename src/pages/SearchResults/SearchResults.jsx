@@ -10,9 +10,7 @@ const SearchResults = ({ searchQuery }) => {
   const observer = useRef();
   const dispatch = useDispatch();
 
-  const { searchResults, pageNumber, hasMore } = useSelector(
-    (store) => store.search
-  );
+  const { searchResults, pageNumber } = useSelector((store) => store.search);
 
   const { loading, error } = useGameSearch(searchQuery, pageNumber);
 
@@ -20,7 +18,7 @@ const SearchResults = ({ searchQuery }) => {
     (node) => {
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting && hasMore) {
+        if (entries[0].isIntersecting) {
           dispatch(updatePageNumber());
         }
       });

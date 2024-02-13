@@ -10,7 +10,7 @@ const Feed = () => {
   const dispatch = useDispatch();
   const observer = useRef();
 
-  const { results, pageNumber, hasMore } = useSelector((store) => store.feed);
+  const { results, pageNumber } = useSelector((store) => store.feed);
 
   const { loading, error } = useGameFeed(pageNumber);
 
@@ -18,7 +18,7 @@ const Feed = () => {
     (node) => {
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting && hasMore) {
+        if (entries[0].isIntersecting) {
           dispatch(updatePageNumber());
         }
       });
