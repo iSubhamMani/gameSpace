@@ -14,7 +14,7 @@ const DiscoverGames = () => {
           <div className="flex flex-[2] flex-col gap-3">
             <div className="sm:h-[360px] flex flex-col md:flex-row gap-3">
               <div className="rounded-lg overflow-hidden relative">
-                <div className="h-full opacity-[60%]">
+                <div className="h-full brightness-[45%]">
                   <LazyImage img={genreData[0].imageUrl} />
                 </div>
                 <button className="hover:text-primary-text-color transition duration-300 ease-in-out absolute cursor-default inset-0 m-auto text-white font-bold text-lg">
@@ -22,7 +22,7 @@ const DiscoverGames = () => {
                 </button>
               </div>
               <div className="rounded-lg overflow-hidden relative">
-                <div className="h-full opacity-[60%]">
+                <div className="h-full brightness-[45%]">
                   <LazyImage img={genreData[3].imageUrl} />
                 </div>
                 <button className="hover:text-primary-text-color transition duration-300 ease-in-out absolute cursor-default inset-0 m-auto text-white font-bold text-lg">
@@ -32,7 +32,7 @@ const DiscoverGames = () => {
             </div>
             <div className="sm:h-[360px] flex flex-col md:flex-row gap-3">
               <div className="rounded-lg overflow-hidden relative">
-                <div className="h-full opacity-[60%]">
+                <div className="h-full brightness-[45%]">
                   <LazyImage img={genreData[1].imageUrl} />
                 </div>
                 <button className="hover:text-primary-text-color transition duration-300 ease-in-out absolute cursor-default inset-0 m-auto text-white font-bold text-lg">
@@ -40,7 +40,7 @@ const DiscoverGames = () => {
                 </button>
               </div>
               <div className="rounded-lg overflow-hidden relative">
-                <div className="h-full opacity-[60%]">
+                <div className="h-full brightness-[45%]">
                   <LazyImage img={genreData[4].imageUrl} />
                 </div>
                 <button className="hover:text-primary-text-color transition duration-300 ease-in-out absolute cursor-default inset-0 m-auto text-white font-bold text-lg">
@@ -51,7 +51,7 @@ const DiscoverGames = () => {
           </div>
           <div className="flex-1">
             <div className="h-[200px] sm:h-[336px] md:h-[732px] rounded-lg overflow-hidden relative">
-              <div className="h-full opacity-[60%]">
+              <div className="h-full brightness-[45%]">
                 <LazyImage img={genreData[2].imageUrl} />
               </div>
               <button className="hover:text-primary-text-color transition duration-300 ease-in-out absolute cursor-default inset-0 m-auto text-white font-bold text-lg">
@@ -61,7 +61,7 @@ const DiscoverGames = () => {
           </div>
         </div>
         <div className="h-[150px] sm:h-[250px] rounded-lg overflow-hidden relative">
-          <div className="h-full opacity-[60%]">
+          <div className="h-full brightness-[45%]">
             <LazyImage img={genreData[5].imageUrl} />
           </div>
           <button className="hover:text-primary-text-color transition duration-300 ease-in-out absolute cursor-default inset-0 m-auto text-white font-bold text-lg">
