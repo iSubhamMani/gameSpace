@@ -25,10 +25,17 @@ const CartDetails = () => {
   };
 
   return cartItems.length === 0 ? (
-    <div className="py-6 px-4 bg-bg-secondary-clr-light dark:bg-bg-secondary-clr-dark flex justify-center flex-1">
-      <p className="text-black dark:text-text-clr-primary font-medium text-lg sm:text-2xl">
-        Cart empty...Add some games to your life!
-      </p>
+    <div className="py-6 px-4 bg-bg-secondary-clr-light dark:bg-bg-secondary-clr-dark flex-1 flex flex-col gap-8">
+      <div>
+        <button onClick={goToPreviousPage}>
+          <img className="w-4 sm:w-6" src={back} alt="" />
+        </button>
+      </div>
+      <div className="flex justify-center ">
+        <p className="text-black text-center dark:text-text-clr-primary font-medium text-lg sm:text-2xl">
+          Cart empty...Add some games to your life!
+        </p>
+      </div>
     </div>
   ) : (
     <div className="flex-1 px-4 sm:px-8 pb-8 bg-bg-secondary-clr-light dark:bg-bg-secondary-clr-dark ">
