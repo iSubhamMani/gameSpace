@@ -2,11 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { API_URL, PAGINATION_OFFSET } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addResults,
-  setHasFeedCache,
-  setHasMore,
-} from "../utils/redux/slices/feed";
+import { addResults, setHasFeedCache } from "../utils/redux/slices/feed";
 
 const useGameFeed = (pageNumber) => {
   const dispatch = useDispatch();
@@ -45,12 +41,14 @@ const useGameFeed = (pageNumber) => {
 
       if (res) {
         dispatch(addResults(res?.data?.results));
-        dispatch(setHasMore(res?.data?.results.length > 0));
         setLoading(false);
       }
     } catch (e) {
-      if (axios.isCancel(e)) return;
-      setError(true);
+      if (e.code === "ERR_BAD_REQUEST") {
+        setLoading(false);
+      } else {
+        setError(true);
+      }
     }
   };
   return { loading, error };

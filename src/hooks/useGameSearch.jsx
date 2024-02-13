@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setHasFeedCache } from "../utils/redux/slices/feed";
 import {
   addSearchResults,
-  setHasMore,
   setHasSearchCache,
   setPageNumber,
   setSearchResults,
@@ -48,8 +47,6 @@ const useGameSearch = (query, pageNumber) => {
     setLoading(true);
     setError(false);
 
-    let cancel;
-
     try {
       const res = await axios({
         method: "GET",
@@ -59,20 +56,19 @@ const useGameSearch = (query, pageNumber) => {
           search: query,
           page: pageNumber,
         },
-        cancelToken: new axios.CancelToken((c) => (cancel = c)),
       });
 
       if (res) {
         dispatch(addSearchResults(res?.data.results));
-        dispatch(setHasMore(res?.data?.results.length > 0));
         setLoading(false);
       }
     } catch (e) {
-      if (axios.isCancel(e)) return;
-      setError(true);
+      if (e.code === "ERR_BAD_REQUEST") {
+        setLoading(false);
+      } else {
+        setError(true);
+      }
     }
-
-    return () => cancel();
   };
   return { loading, error };
 };
