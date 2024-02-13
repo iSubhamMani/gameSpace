@@ -10,6 +10,8 @@ import { useEffect, useState } from "react";
 import { Check } from "react-feather";
 import LazyImage from "../../components/LazyImage/LazyImage";
 import ContentError from "../../components/Error/ContentError";
+import { useNavigate } from "react-router-dom";
+import arrow from "../../assets/right-arrow.png";
 
 const GameDetails = () => {
   const { gameDetails, gameScreenshots, loading, error, price } =
@@ -18,6 +20,7 @@ const GameDetails = () => {
   const { cartItems } = useSelector((store) => store.cart);
 
   const [inCart, setInCart] = useState(false);
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -36,6 +39,10 @@ const GameDetails = () => {
     );
   };
 
+  const goToPreviousPage = () => {
+    navigate(-1);
+  };
+
   return loading ? (
     <div className="gap-8 bg-bg-secondary-clr-light dark:bg-bg-secondary-clr-dark flex-1 flex flex-col justify-center items-center">
       <Loader />
@@ -46,6 +53,11 @@ const GameDetails = () => {
       <div className="relative h-[40vh] sm:h-[75vh]">
         <div className="h-full brightness-[45%]">
           <LazyImage img={gameDetails?.background_image} />
+        </div>
+        <div className="absolute p-4 sm:p-8 md:p-12 top-0 left-0">
+          <button onClick={goToPreviousPage}>
+            <img className="w-4 sm:w-6 rotate-180" src={arrow} alt="" />
+          </button>
         </div>
         <div className="w-full gap-2 flex flex-col sm:flex-row items-start justify-between p-4 sm:p-8 md:p-12 absolute bottom-0 left-0 bg-gradient-to-t from-bg-secondary-clr-light dark:from-bg-secondary-clr-dark to-transparent">
           <div>
