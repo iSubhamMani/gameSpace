@@ -5,7 +5,6 @@ const search = createSlice({
   initialState: {
     searchQuery: "",
     pageNumber: 1,
-    hasMore: false,
     searchResults: [],
     hasSearchCache: false,
   },
@@ -28,9 +27,6 @@ const search = createSlice({
     setPageNumber: (state, action) => {
       state.pageNumber = action.payload;
     },
-    setHasMore: (state, action) => {
-      state.hasMore = action.payload;
-    },
   },
 });
 
@@ -41,6 +37,5 @@ export const {
   setHasSearchCache,
   updatePageNumber,
   setPageNumber,
-  setHasMore,
 } = search.actions;
 export default search.reducer;

@@ -3,7 +3,6 @@ import DiscoverGames from "../../components/DiscoverGames/DiscoverGames";
 import { useDispatch } from "react-redux";
 import {
   setHasFeedCache,
-  setHasMore,
   setPageNumber,
   setResults,
 } from "../../utils/redux/slices/feed";
@@ -13,7 +12,6 @@ const Landing = () => {
   useEffect(() => {
     dispatch(setResults([]));
     dispatch(setHasFeedCache(false));
-    dispatch(setHasMore(false));
     dispatch(setPageNumber(1));
   }, []);
 

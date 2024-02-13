@@ -5,7 +5,6 @@ const feed = createSlice({
   initialState: {
     results: [],
     pageNumber: 1,
-    hasMore: false,
     hasFeedCache: false,
   },
   reducers: {
@@ -21,9 +20,6 @@ const feed = createSlice({
     setPageNumber: (state, action) => {
       state.pageNumber = action.payload;
     },
-    setHasMore: (state, action) => {
-      state.hasMore = action.payload;
-    },
     setHasFeedCache: (state, action) => {
       state.hasFeedCache = action.payload;
     },
@@ -34,7 +30,6 @@ export const {
   addResults,
   updatePageNumber,
   setPageNumber,
-  setHasMore,
   setHasFeedCache,
   setResults,
 } = feed.actions;
